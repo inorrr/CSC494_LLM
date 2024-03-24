@@ -23,7 +23,7 @@ import logging
 
 import numpy as np
 import torch
-
+import time
 from transformers import (
     CTRLLMHeadModel,
     CTRLTokenizer,
@@ -247,7 +247,10 @@ def main():
         input_ids = None
     else:
         input_ids = encoded_prompt
-
+   
+   # start timer
+    start_time = time.time()
+    
     output_sequences = model.generate(
         input_ids=input_ids,
         max_length=args.length + len(encoded_prompt[0]),
@@ -258,7 +261,7 @@ def main():
         do_sample=True,
         num_return_sequences=args.num_return_sequences,
     )
-
+    
     # Remove the batch dimension when returning multiple sequences
     if len(output_sequences.shape) > 2:
         output_sequences.squeeze_()
@@ -283,6 +286,9 @@ def main():
         generated_sequences.append(total_sequence)
         print(total_sequence)
 
+    # end timer
+    sequence_complete_time = time.time()
+    print("Execution Time: " , sequence_complete_time - start_time, "seconds")
     return generated_sequences
 
 

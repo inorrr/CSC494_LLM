@@ -30,7 +30,7 @@ if 'de-en' in args.model:
     assert args.target_lang == 'en' and args.source_lang == 'de'
 
 
-FILE = 'examples/pytorch/translation/run_translation.py'
+FILE = 'run_translation.py'
 
 subprocess_args = [
     'python', FILE,
