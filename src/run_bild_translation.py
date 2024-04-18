@@ -55,6 +55,7 @@ subprocess_args = [
     '--evaluation_strategy', 'epoch',
     '--save_strategy', 'epoch',
     '--do_eval',
+    '--do_predict',
     '--per_device_eval_batch_size', '1',
 ]
 

@@ -1,11 +1,4 @@
 {
-    "eval_bleu": 34.4194,
-    "eval_gen_len": 27.5259,
-    "eval_loss": 1.0805256366729736,
-    "eval_runtime": 654.4793,
-    "eval_samples": 888,
-    "eval_samples_per_second": 1.357,
-    "eval_steps_per_second": 1.357,
     "predict_bleu": 34.7681,
     "predict_gen_len": 30.4661,
     "predict_loss": 1.0986088514328003,

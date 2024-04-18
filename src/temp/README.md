@@ -21,9 +21,9 @@ It achieves the following results on the evaluation set:
 - eval_loss: 1.0805
 - eval_bleu: 34.4194
 - eval_gen_len: 27.5259
-- eval_runtime: 649.726
-- eval_samples_per_second: 1.367
-- eval_steps_per_second: 1.367
+- eval_runtime: 654.4793
+- eval_samples_per_second: 1.357
+- eval_steps_per_second: 1.357
 - step: 0
 
 ## Model description

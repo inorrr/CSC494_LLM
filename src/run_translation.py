@@ -65,6 +65,20 @@ logger = logging.getLogger(__name__)
 # A list of all multilingual tokenizer which require src_lang and tgt_lang attributes.
 MULTILINGUAL_TOKENIZERS = [MBartTokenizer, MBartTokenizerFast, MBart50Tokenizer, MBart50TokenizerFast, M2M100Tokenizer]
 
+female_related_words = [
+    "she", "her", "hers", "woman", "female", "girl", "lady",
+    "mother", "daughter", "sister", "wife", "girlfriend",
+    "feminine", "feminist", "queen", "princess", "actress",
+    "matron", "matriarch", "bride", "maid", "miss", "madam",
+    "mademoiselle", "femme"
+]
+
+male_related_words = [
+    "he", "him", "his", "man", "male", "boy", "gentleman",
+    "father", "son", "brother", "husband", "boyfriend",
+    "masculine", "king", "prince", "actor", "patron",
+    "patriarch", "groom", "butler", "mr", "sir", "monsieur"
+]
 
 @dataclass
 class ModelArguments:
@@ -351,6 +365,9 @@ def main():
             cache_dir=model_args.cache_dir,
             use_auth_token=True if model_args.use_auth_token else None,
         )
+        raw_datasets["test"] = raw_datasets["test"].filter(lambda example: any(word in example['translation']['en'].
+                        lower().split() for word in female_related_words))
+
     else:
         data_files = {}
         if data_args.train_file is not None:
