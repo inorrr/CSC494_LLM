@@ -365,8 +365,8 @@ def main():
             cache_dir=model_args.cache_dir,
             use_auth_token=True if model_args.use_auth_token else None,
         )
-        raw_datasets["test"] = raw_datasets["test"].filter(lambda example: any(word in example['translation']['en'].
-                        lower().split() for word in female_related_words))
+        #raw_datasets["test"] = raw_datasets["test"].filter(lambda example: any(word in example['translation']['en'].
+        #                lower().split() for word in male_related_words))
 
     else:
         data_files = {}

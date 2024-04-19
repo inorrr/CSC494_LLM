@@ -1,9 +1,9 @@
 {
-    "predict_bleu": 34.7681,
-    "predict_gen_len": 30.4661,
-    "predict_loss": 1.0986088514328003,
-    "predict_runtime": 287.035,
-    "predict_samples": 354,
-    "predict_samples_per_second": 1.233,
-    "predict_steps_per_second": 1.233
+    "predict_bleu": 33.2378,
+    "predict_gen_len": 23.6094,
+    "predict_loss": 1.1204328536987305,
+    "predict_runtime": 5039.9191,
+    "predict_samples": 8079,
+    "predict_samples_per_second": 1.603,
+    "predict_steps_per_second": 1.603
 }

@@ -22,7 +22,7 @@ from .deepspeed import is_deepspeed_zero3_enabled
 from .trainer import Trainer
 from .trainer_utils import PredictionOutput
 from .utils import logging
-
+import time
 
 logger = logging.get_logger(__name__)
 
@@ -194,11 +194,21 @@ class Seq2SeqTrainer(Trainer):
             generation_inputs = inputs[self.model.encoder.main_input_name]
         else:
             generation_inputs = inputs[self.model.main_input_name]
+        
+        start_time = time.time()
 
         generated_tokens = self.model.generate(
             generation_inputs,
             **gen_kwargs,
         )
+
+        end_time = time.time()
+        token_generation_time = (end_time - start_time)/generated_tokens.shape[-1]
+
+        with open("token_generation_times.txt", "a") as f:
+            f.write(f"{token_generation_time}\n")
+        
+
         # in case the batch is shorter than max length, the output should be padded
         if gen_kwargs.get("max_length") is not None and generated_tokens.shape[-1] < gen_kwargs["max_length"]:
             generated_tokens = self._pad_tensors_to_max_len(generated_tokens, gen_kwargs["max_length"])
